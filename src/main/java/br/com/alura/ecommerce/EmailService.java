@@ -1,6 +1,10 @@
 package br.com.alura.ecommerce;
 
+import java.util.Map;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.common.serialization.StringDeserializer;
 
 public class EmailService {
 
@@ -8,7 +12,8 @@ public class EmailService {
 		var emailService = new EmailService();
 		try (var service = new KafkaService<String>(EmailService.class.getSimpleName(), "ECOMMERCE_SEND_EMAIL",
 				emailService::parse,
-				String.class)) {
+				String.class,
+				Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName()))) {
 			service.run();
 		}
 

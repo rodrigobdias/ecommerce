@@ -11,7 +11,8 @@
 		<module>service-log</module>
 		<module>service-new-order</module>
 		<module>common-kafka</module>
-	</modules>
+        <module>service-users</module>
+    </modules>
     <packaging>pom</packaging>
     <build>
         <plugins>

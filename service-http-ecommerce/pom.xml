@@ -18,6 +18,12 @@
             <artifactId>jetty-servlet</artifactId>
             <version>9.4.32.v20200930</version>
         </dependency>
+        <dependency>
+            <groupId>br.com.alura</groupId>
+            <artifactId>common-kafka</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

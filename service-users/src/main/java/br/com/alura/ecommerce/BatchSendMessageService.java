@@ -37,7 +37,7 @@ public class BatchSendMessageService {
         }
     }
 
-    private final KafkaDispatcher<User> userDispatcher = new KafkaDispatcher<Order>();
+    private final KafkaDispatcher<User> userDispatcher = new KafkaDispatcher<>();
 
     private void parse(ConsumerRecord<String, String> record) throws SQLException, ExecutionException, InterruptedException {
         System.out.println("---------------------------------------------");

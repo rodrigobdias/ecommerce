@@ -10,7 +10,7 @@ public class HttpEcommerceService {
 
     public static void main(String[] args) throws Exception {
 
-        var server = new Server(8092);
+        var server = new Server(9098);
 
         var context = new ServletContextHandler();
         context.setContextPath("/");

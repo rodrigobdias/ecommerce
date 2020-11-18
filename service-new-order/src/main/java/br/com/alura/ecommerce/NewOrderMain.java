@@ -1,5 +1,7 @@
 package br.com.alura.ecommerce;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+
 import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -10,10 +12,9 @@ public class NewOrderMain {
 
 		try (var orderDispatcher = new KafkaDispatcher<Order>()) {
 			try (var emailDispatcher = new KafkaDispatcher<Email>()) {
-
 				var email = Math.random() + "@email.com";
-
 				for (var i = 0; i < 30; i++) {
+
 					var orderId = UUID.randomUUID().toString();
 					var amount = new BigDecimal(Math.random() * 5000 + 1);
 

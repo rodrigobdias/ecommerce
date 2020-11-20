@@ -10,6 +10,8 @@ public class NewOrderMain {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 
+		var correlationId = new CorrelationId(NewOrderMain.class.getSimpleName());
+
 		try (var orderDispatcher = new KafkaDispatcher<Order>()) {
 			try (var emailDispatcher = new KafkaDispatcher<Email>()) {
 				var email = Math.random() + "@email.com";
@@ -19,10 +21,10 @@ public class NewOrderMain {
 					var amount = new BigDecimal(Math.random() * 5000 + 1);
 
 					var order = new Order(orderId, amount, email);
-					orderDispatcher.send("ECOMMERCE_NEW_ORDER", email, order);
+					orderDispatcher.send("ECOMMERCE_NEW_ORDER", email, correlationId ,order);
 
 					var emailCode = new Email("Ordem@gmail.com", "Bem vindo, estamos processando sua ordem !");
-					emailDispatcher.send("ECOMMERCE_SEND_EMAIL", email, emailCode);
+					emailDispatcher.send("ECOMMERCE_SEND_EMAIL", email, correlationId, emailCode);
 				}
 			}
 		}

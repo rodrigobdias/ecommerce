@@ -3,9 +3,8 @@ package br.com.alura.ecommerce;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import org.apache.kafka.clients.consumer.ConsumerConfig;
+import br.com.alura.ecommerce.consumer.KafkaService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.serialization.StringDeserializer;
 
 public class EmailService {
 
